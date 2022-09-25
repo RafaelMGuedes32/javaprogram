@@ -1,0 +1,139 @@
+package View;
+
+import java.util.Scanner;
+
+public class Tela {
+	
+	public static void main(String[] Args) {
+	
+		try (Scanner entrada = new Scanner(System.in)) {
+			try (Scanner entradaString = new Scanner(System.in)) {
+				
+				// Decalaração de variáveis
+				int menu;
+				String registro, nome, cpf, email, telefone, dataNasc;
+				
+				Controle objUsuario;
+				
+				do {
+					exibirMenu();
+					menu = entrada.nextInt();
+					
+					switch(menu) {
+						
+						case 1:
+							System.out.println("\nCadastro de usuários\n");
+							System.out.println("Digite o registro: ");
+							registro = entradaString.nextLine();
+							
+							System.out.println("Digite o nome: ");
+							nome = entradaString.nextLine();
+							
+							System.out.println("Digite o CPF: ");
+							cpf = entradaString.nextLine();
+							
+							System.out.println("Digite o email: ");
+							email = entradaString.nextLine();
+							
+							System.out.println("Digite o telefone: ");
+							telefone = entradaString.nextLine();
+							
+							System.out.println("Digite a data nascimento: ");
+							dataNasc = entradaString.nextLine();
+							
+							objUsuario = new Controle(registro, nome, cpf, email, telefone, dataNasc);
+							
+							Modelo.adicionar(objUsuario);
+							
+							break;
+						
+						case 2:
+							System.out.println("\nListagem de usuários");
+							if(! (Modelo.getListaUsuario().isEmpty()) ) {
+								System.out.println(Modelo.listar());
+							}
+							else {
+								System.out.println("\nnão existem usuários cadastrados!\n\n");
+							}
+							break;
+							
+						case 3:
+							System.out.println("\nExcluir usuário\n");
+							System.out.println("Digite o registro: ");
+							registro = entradaString.nextLine();
+							
+							if( ! (Modelo.getListaUsuario().isEmpty())) {
+								if(Modelo.remover(registro)) {
+									System.out.println("\nUsuário removido com sucesso!\n");
+								}
+								else {
+									System.out.println("\nUsuário não encontrado!\n");
+								}
+							}
+							
+							break;
+							
+						case 4:
+							System.out.println("\nPesquisar usuário\n");
+							System.out.println("Informe o registro do usuário: ");
+							registro = entradaString.nextLine();
+							
+							Modelo.pesquisar(registro);
+							
+							break;
+							
+						case 5:
+							System.out.println("\nEditar usuário\n");
+							
+							System.out.println("Digite o registro: ");
+							registro = entradaString.nextLine();
+							
+							System.out.println("Digite o nome: ");
+
+							nome = entradaString.nextLine();
+							
+							System.out.println("Digite o cpf: ");
+							cpf = entradaString.nextLine();
+							
+							System.out.println("Digite o email: ");
+							email = entradaString.nextLine();
+							
+							System.out.println("Digite o telefone: ");
+							telefone = entradaString.nextLine();
+							
+							System.out.println("Digite a data nascimento: ");
+							dataNasc = entradaString.nextLine();
+							
+							Modelo.editar(registro, nome, cpf, email, telefone, dataNasc);
+							
+							break;
+							
+						case 6:
+							System.out.println("Saindo... ");
+							break;
+							
+							default:
+								System.out.println("Opção inválida!");
+						
+					}
+					
+					
+				}while(menu != 6);
+			}
+		}
+		
+	}
+	
+	static void exibirMenu() {
+		System.out.println("Cadastro e listagem de usuários");
+		System.out.println("===============================");
+		System.out.println("1. Cadastrar");
+		System.out.println("2. Listar");
+		System.out.println("3. Excluir");
+		System.out.println("4. Pesquisar");
+		System.out.println("5. Editar");
+		System.out.println("6. Sair");
+		System.out.println("===============================");
+		System.out.println("Escolha uma opção: ");
+	}	
+}
