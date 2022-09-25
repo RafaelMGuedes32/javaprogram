@@ -1,0 +1,78 @@
+package View;
+
+public class Controle {
+	
+	private String registro;
+	private String nome;
+	private String cpf;
+	private String email;
+	private String telefone;
+	private String dataNasc;
+	
+	public Controle() {
+	}
+	
+	public Controle(String registro, String nome, String cpf, String email, String telefone, String dataNasc) {
+		this.registro = registro;
+		this.nome = nome;
+		this.cpf = cpf;
+		this.email = email;
+		this.telefone = telefone;
+		this.dataNasc = dataNasc;
+	}
+
+	public String getRegistro() {
+		return registro;
+	}
+
+	public void setRegistro(String registro) {
+		this.registro = registro;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
+	public String getDataNasc() {
+		return dataNasc;
+	}
+
+	public void setDataNasc(String dataNasc) {
+		this.dataNasc = dataNasc;
+	}
+	
+	public String imprimir() {
+		return "Registro: " + registro + "\nNome: " + nome + "\nCPF: " + cpf + "\nEmail: " + email + 
+				"\nTelefone: " + telefone + "\nData Nascimento: " + dataNasc;
+	}
+	
+
+}
