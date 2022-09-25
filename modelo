@@ -1,0 +1,90 @@
+package View;
+
+import java.util.ArrayList;
+
+public class Modelo {
+	
+	// ArrayList
+	private static ArrayList<Controle> listaUsuario = new ArrayList<>();
+	
+	// Get ArrayList
+	public static ArrayList<Controle> getListaUsuario(){
+		return listaUsuario;
+	}
+	
+	// Método Adicionar
+	static public void adicionar(Controle a) {
+		listaUsuario.add(a);
+	}
+	
+	//Método para listar os dados do Array
+	static public String listar() {
+		String saida = "";
+		int i = 1;
+		
+		for(Controle a: listaUsuario) {
+			saida += "\nUsuários Cadastrados" + (i++) + "\n";
+			saida += a.imprimir() + "\n";
+		}
+		
+		return saida;
+	}
+	
+	//Método pesquisar usuário
+	static public void pesquisar(String id) {
+		
+		for(Controle a: listaUsuario) {
+			if(a.getRegistro().equalsIgnoreCase(id)) {
+				
+				System.out.println("\nUsuário encontrado\n");
+				System.out.println(a.getRegistro());
+				System.out.println(a.getNome());
+				System.out.println(a.getCpf());
+				System.out.println(a.getEmail());
+				System.out.println(a.getTelefone());
+				System.out.println(a.getDataNasc());
+				System.out.println("\n\n");
+				
+			}
+			else {
+				System.out.println("\nUsuário não existe\n");
+			}
+		}
+	}
+	
+	// Método remover usuário
+	static public boolean remover(String registro) {
+		
+		for(Controle a: listaUsuario) {
+			if(a.getRegistro().contentEquals(registro)) {
+				listaUsuario.remove(a);
+				return true;
+			}		
+		}
+		return false;
+	}
+	
+	// Método para editar
+	static public void editar(String registro, String nome, String cpf, String email, String telefone, String dataNasc) {
+		
+		for(Controle a: listaUsuario) {
+			
+			if(a.getRegistro().equalsIgnoreCase(registro)) {
+				
+				a.setRegistro(registro);
+				a.setNome(nome);
+				a.setCpf(cpf);
+				a.setEmail(email);
+				a.setTelefone(telefone);
+				a.setDataNasc(dataNasc);
+
+				System.out.println("\nUsuário editado com sucesso!\n");	
+			}
+			else {
+				System.out.println("\nUsuário não existe\n");
+			}
+		}
+		
+	}
+	
+}
